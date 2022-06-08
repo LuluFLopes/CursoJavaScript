@@ -8,7 +8,15 @@ botaoAdicionar.addEventListener("click", function () {
 
     xhr.addEventListener("load", function () { // Evento load para executar comandos após o carregamento da página.
 
-        console.log(xhr.responseText); // Pega o objeto em forma de String.
+        var resposta = xhr.responseText;
+
+        var pacientes = JSON.parse(resposta);
+
+        pacientes.forEach(function (paciente) {
+
+            adicionaPacienteNaTabela(paciente);
+
+        });
 
     });
 
