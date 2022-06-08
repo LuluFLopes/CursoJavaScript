@@ -4,14 +4,16 @@ campoFiltro.addEventListener("input", function () {
     var pacientes = document.querySelectorAll(".paciente");
 
     if (this.value.length > 0) {
-        paciente.classList.remove("invisivel");
+    
+        paciente.classList.remove("invisivel"); // Removendo a classe da tag.
 
         pacientes.forEach(function (paciente) {
 
             var tdNome = paciente.querySelector(".info-nome");
             var nome = tdNome.textContent;
+            var expressao = new RegExp(campoFiltro.value, "i"); // Criando expressão regular.
 
-            if (nome != campoFiltro.value) {
+            if (!expressao.test(nome)) { // Utilizando .test para comparar a expressão com o nome.
                 paciente.classList.add("invisivel");
 
             } else {
@@ -19,11 +21,11 @@ campoFiltro.addEventListener("input", function () {
             }
 
         });
-        
+
     } else {
         pacientes.forEach(function (paciente) {
 
-        paciente.classList.remove("invisivel");
+            paciente.classList.remove("invisivel");
 
         });
     }
