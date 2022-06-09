@@ -11,8 +11,10 @@ botaoAdicionar.addEventListener("click", function () {
     xhr.addEventListener("load", function () { // Evento load para executar comandos após o carregamento da página.
 
         if (xhr.status == 200) { // Garante que a requisição foi realizada com sucesso.
+            
+            var erroAjax = document.querySelector("#erro-ajax");
             erroAjax.classList.add("invisivel");
-            erroAjax.classList.remove("erro-ajax"); 
+            erroAjax.classList.remove("erro-ajax");
 
             var resposta = xhr.responseText; // Salva o arquivo json como string.
             var pacientes = JSON.parse(resposta); // Converte o json em array.
